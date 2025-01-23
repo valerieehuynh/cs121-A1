@@ -22,3 +22,21 @@ def tokenize(file):
 
                 if temp:  
                     result.append(temp)
+
+    except Exception as e:
+        print(f"Can't read file: {e}")
+        sys.exit(1)
+    
+    except UnicodeDecodeError:
+        print("Can't decode this file.")
+        sys.exit(1)
+
+    except FileNotFoundError:
+        print(f"File not Found: {file}")
+        sys.exit(1)
+    
+    
+    return result
+
+
+
