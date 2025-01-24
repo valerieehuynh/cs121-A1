@@ -51,37 +51,44 @@ def compute_word_frequencies(tokens):
             
     return result
 
-def common_words(file1_path, file2_path):
-    t1 = set(tokenize(file1_path))
-    t2 = set(tokenize(file2_path))
+def print_frequencies(frequencies):
+    freqs = []
 
+    for k, v in frequencies.items(): 
+        freqs.append((k, v))
 
-    common_words = t1.intersection(t2)
+    
+    def sort_key(item):
 
-    return len(common_words)
+        return (-item[1], item[0])  
+
+    sortedFreqs = sorted(freqs, key=sort_key)
+
+    
+    for k, v in sortedFreqs:
+        print(f"{k}\t{v}")
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 3:
-        print("Error. Use it like this: python PartB.py TextFilePath1 TextFilePath2")
+    if len(sys.argv) != 2:
+
+        print("Error. Use it like this: python PartA.py TextFilePath")
         sys.exit(1)
 
-    f1 = sys.argv[1]
-    f2 = sys.argv[2]
+    filePath = sys.argv[1]
 
     try:
         
-        result = common_words(f1, f2)
-
-        
-        print(result)
+        tokens = tokenize(filePath)
+        words = compute_word_frequencies(tokens)
+        print_frequencies(words)
 
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
 
-    except FileNotFoundError as e:
-        print(f"File not Found: {e}")
-        sys.exit(1)
 
+    except FileNotFoundError:
+        print(f"Error: The file path isn't valid or DNE: '{filePath}'.")
+        sys.exit(1)
 
