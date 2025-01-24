@@ -37,6 +37,19 @@ def tokenize(file):
     
     return result
 
+def compute_word_frequencies(tokens):
+     result = {}
+
+    for i in tokens:
+
+        if i not in result:
+            result[i] = 1
+            
+        else:
+            result[i] = result[i] + 1
+            
+    return result
+
 def common_words(file1_path, file2_path):
     t1 = set(tokenize(file1_path))
     t2 = set(tokenize(file2_path))
