@@ -38,7 +38,7 @@ def tokenize(file):
     return result
 
 def compute_word_frequencies(tokens):
-     result = {}
+    result = {}
 
     for i in tokens:
 
