@@ -1,7 +1,9 @@
 import sys
 
 def tokenize(file):
-
+    """
+    runs in linear complexity O(n). iterates through all characters in file. 
+    """
     result = []
 
     try:
@@ -38,6 +40,10 @@ def tokenize(file):
     
     return result
 
+    """
+    m = tokens
+    runs in O(m). iterates through tokens and checks if it exists. if it does then it updates count. 
+    """
 def compute_word_frequencies(tokens):
     result = {}
 
@@ -50,6 +56,11 @@ def compute_word_frequencies(tokens):
             result[i] = result[i] + 1
             
     return result
+
+    """
+    runs in O(k log k). runtime grows to input of k. it sorts and prints frequencies in descending order
+    and lexigraphocally. k = unique # of words.
+    """
 
 def print_frequencies(frequencies):
     freqs = []
@@ -68,6 +79,9 @@ def print_frequencies(frequencies):
     for k, v in sortedFreqs:
         print(f"{k}\t{v}")
 
+    """
+    runs in O(n + m + k log k).  n = # of characters in file, m = # of tokens, k = # of uniqiue words
+    """
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
