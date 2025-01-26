@@ -1,5 +1,8 @@
 import sys
 
+"""
+runs in linear complexity O(n). iterates through all characters in file once. 
+"""
 def tokenize(file):
     result = []
 
@@ -37,6 +40,10 @@ def tokenize(file):
     
     return result
 
+"""
+m = tokens
+runs in O(m). iterates through tokens and checks if it exists. if it does then it updates count. 
+"""
 def compute_word_frequencies(tokens):
     result = {}
 
@@ -50,7 +57,14 @@ def compute_word_frequencies(tokens):
             
     return result
 
+"""
+runs in O(n1+n2). find common words between two files. n1 & n2 are total characters in file1 & file2. 
+tokenizing them is O(n). 
+"""
 def common_words(file1_path, file2_path):
+    """
+    runs in O(n1 + n2). computes number of common words through processing two input files. 
+    """
     t1 = set(tokenize(file1_path))
     t2 = set(tokenize(file2_path))
 

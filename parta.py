@@ -2,7 +2,7 @@ import sys
 
 def tokenize(file):
     """
-    runs in linear complexity O(n). iterates through all characters in file. 
+    runs in linear complexity O(n). iterates through all characters in file once. 
     """
     result = []
 
